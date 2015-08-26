@@ -58,19 +58,19 @@
   }
 
 5. 请在 ViewController 的 ViewWillAppear 中加入以下代码
-    
-(void) viewWillAppear:(BOOL)animated 
 
-{
+    (void) viewWillAppear:(BOOL)animated 
 
-    [super viewWillAppear: animated];
+        {
+
+        [super viewWillAppear: animated];
     
-    [self.scrollView startAutoScroll];
+        [self.scrollView startAutoScroll];
   
-}
+    }
 
 6. 请在 ViewController 的 ViewWillDisappear 中加入以下代码
-7. 
+
   (void) viewWillDisappear:(BOOL)animated 
 {
 
