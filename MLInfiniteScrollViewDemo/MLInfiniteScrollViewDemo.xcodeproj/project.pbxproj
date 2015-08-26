@@ -18,6 +18,7 @@
 		9B5D57371B8C64A20088E650 /* MLInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5D57341B8C64A20088E650 /* MLInfiniteScrollView.m */; };
 		9B5D57381B8C64A20088E650 /* MLInfiniteScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5D57361B8C64A20088E650 /* MLInfiniteScrollViewCell.m */; };
 		9B5D573B1B8C69320088E650 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5D573A1B8C69320088E650 /* CustomTableViewCell.m */; };
+		9BB726E91B8D777800CFA1B6 /* CustomInfiniteScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB726E81B8D777800CFA1B6 /* CustomInfiniteScrollViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		9B5D57361B8C64A20088E650 /* MLInfiniteScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLInfiniteScrollViewCell.m; sourceTree = "<group>"; };
 		9B5D57391B8C69320088E650 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		9B5D573A1B8C69320088E650 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		9BB726E71B8D777800CFA1B6 /* CustomInfiniteScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomInfiniteScrollViewCell.h; sourceTree = "<group>"; };
+		9BB726E81B8D777800CFA1B6 /* CustomInfiniteScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomInfiniteScrollViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,8 @@
 				9B5D57301B8C64490088E650 /* TableViewController.m */,
 				9B5D57391B8C69320088E650 /* CustomTableViewCell.h */,
 				9B5D573A1B8C69320088E650 /* CustomTableViewCell.m */,
+				9BB726E71B8D777800CFA1B6 /* CustomInfiniteScrollViewCell.h */,
+				9BB726E81B8D777800CFA1B6 /* CustomInfiniteScrollViewCell.m */,
 				9B5D57131B8C63E30088E650 /* Main.storyboard */,
 				9B5D57161B8C63E30088E650 /* Images.xcassets */,
 				9B5D57181B8C63E30088E650 /* LaunchScreen.xib */,
@@ -251,6 +256,7 @@
 				9B5D573B1B8C69320088E650 /* CustomTableViewCell.m in Sources */,
 				9B5D57121B8C63E30088E650 /* ViewController.m in Sources */,
 				9B5D570F1B8C63E30088E650 /* AppDelegate.m in Sources */,
+				9BB726E91B8D777800CFA1B6 /* CustomInfiniteScrollViewCell.m in Sources */,
 				9B5D570C1B8C63E30088E650 /* main.m in Sources */,
 				9B5D57371B8C64A20088E650 /* MLInfiniteScrollView.m in Sources */,
 				9B5D57311B8C64490088E650 /* TableViewController.m in Sources */,
@@ -450,6 +456,7 @@
 				9B5D572B1B8C63E30088E650 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9B5D572C1B8C63E30088E650 /* Build configuration list for PBXNativeTarget "MLInfiniteScrollViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +465,7 @@
 				9B5D572E1B8C63E30088E650 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
