@@ -9,12 +9,10 @@
 /**
  *  MLInfiniteScrollViewCell:
  *      请使用 
-                - (instancetype) initWithStyle:(MLInfiniteScrollViewStyle)style reusableIdentifier:(NSString *)identifier; 
+                - (instancetype) initWithStyle:(MLInfiniteScrollViewStyle)style reusableIdentifier:(NSString *)identifier bounds:(CGRect)bounds;
                         或
-                + (instancetype) infiniteScrollViewCellWithStyle:(NSInteger)style reusableIdentifier:(NSString *)identifier;
- 
- *  自定义 Cell 的时候, 请在 -(void)setFrame:(CGRect)frame; 方法中重新布局您
- *  的自定义控件的位置
+                + (instancetype) infiniteScrollViewCellWithStyle:(NSInteger)style reusableIdentifier:(NSString *)identifier bounds:(CGRect)bounds;
+        实例化 MLInfiniteScrollViewCell
  */
 
 #import <UIKit/UIKit.h>
@@ -42,24 +40,26 @@ typedef void(^InfiniteCellDidClick)(NSInteger index);
 @property (nonatomic, assign, readonly) MLInfiniteScrollViewStyle style;
 
 /**
- *  Init 方法
+ *   Init 方法
  *
  *  @param style      MLInfiniteScrollViewCell类型
  *  @param identifier MLInfiniteScrollViewCell标示符
+ *  @param bounds     Bounds
  *
  *  @return MLInfiniteScrollViewCell实例
  */
-- (instancetype) initWithStyle:(MLInfiniteScrollViewStyle)style reusableIdentifier:(NSString *)identifier;
+- (instancetype) initWithStyle:(MLInfiniteScrollViewStyle)style reusableIdentifier:(NSString *)identifier bounds:(CGRect)bounds;
 
 /**
- *  工厂方法
+ *   工厂方法
  *
- *  @param type       MLInfiniteScrollViewCell类型
+ *  @param style      MLInfiniteScrollViewCell类型
  *  @param identifier MLInfiniteScrollViewCell标示符
+ *  @param bounds     Bounds
  *
  *  @return MLInfiniteScrollViewCell实例
  */
-+ (instancetype) infiniteScrollViewCellWithStyle:(NSInteger)style reusableIdentifier:(NSString *)identifier;
++ (instancetype) infiniteScrollViewCellWithStyle:(NSInteger)style reusableIdentifier:(NSString *)identifier bounds:(CGRect)bounds;
 
 /**
  *  图片
@@ -75,12 +75,6 @@ typedef void(^InfiniteCellDidClick)(NSInteger index);
  *  下方文字 Label
  */
 @property (nonatomic, strong) UILabel *textLabel;
-
-/**
- *  自定义 TextLabel 的位置, 默认为: No
- *   该属性允许您自定义 textLabel 的位置和大小
- */
-@property (nonatomic, assign) BOOL *customTextLabelFrame;
 
 /**
  *  当前 Cell 的位置

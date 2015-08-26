@@ -140,7 +140,7 @@ extern NSString * const kStopTimerNotification;
  *
  *  @return 可复用的 MLInfiniteScrollViewCell 实例
  */
-- (MLInfiniteScrollViewCell *) dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier;
+- (id) dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier;
 
 /** 用来判断是否正在动画过程中 */
 @property (nonatomic, assign, getter=isScrolling, readonly) BOOL scrolling;

@@ -25,8 +25,8 @@
 #pragma mark - 构造方法
 #pragma mark -
 #pragma mark Init 方法
-- (instancetype) initWithStyle:(MLInfiniteScrollViewStyle)style reusableIdentifier:(NSString *)identifier  {
-    if (self = [super init]) {
+- (instancetype) initWithStyle:(MLInfiniteScrollViewStyle)style reusableIdentifier:(NSString *)identifier bounds:(CGRect)bounds {
+    if (self = [super initWithFrame:bounds]) {
         
         // 1. 设置私有变量
         self.identifier = identifier;
@@ -45,8 +45,9 @@
     return self;
 }
 #pragma mark 工厂方法
-+ (instancetype) infiniteScrollViewCellWithStyle:(NSInteger)style reusableIdentifier:(NSString *)identifier {
-    MLInfiniteScrollViewCell *cell = [[MLInfiniteScrollViewCell alloc] initWithStyle: style reusableIdentifier: identifier];
++ (instancetype) infiniteScrollViewCellWithStyle:(NSInteger)style reusableIdentifier:(NSString *)identifier bounds:(CGRect)bounds {
+    
+    MLInfiniteScrollViewCell *cell = [[MLInfiniteScrollViewCell alloc] initWithStyle: style reusableIdentifier: identifier bounds: bounds];
     return cell;
 }
 #pragma mark - 析构方法
@@ -67,6 +68,7 @@
     self.contentView.backgroundColor = [UIColor whiteColor];
     [self addSubview: self.contentView];
     
+    // 2. 根据 Cell 类型创建对应的控件
     switch (self.style) {
         case MLInfiniteScrollViewStyleDefault:
         {
@@ -90,6 +92,20 @@
         default:
             break;
     }
+    
+    // 3. 设置 ContentView 的 Frame
+    self.contentView.frame = CGRectMake(
+                                        self.contentViewInset.left,
+                                        self.contentViewInset.top,
+                                        self.frame.size.width - self.contentViewInset.left - self.contentViewInset.right,
+                                        self.frame.size.height - self.contentViewInset.top - self.contentViewInset.bottom);
+    
+    // 4. 设置 图片 的 Frame
+    self.imageView.frame = (CGRect) {CGPointZero, self.contentView.frame.size};
+    
+    // 5. 设置 下方文字 的 Frame
+    CGFloat height = self.contentView.frame.size.height/5.0;
+    self.textLabel.frame = (CGRect) {{0, self.contentView.frame.size.height-height}, {self.contentView.frame.size.width, height}};
 }
 
 #pragma mark 创建 ImageView
@@ -130,22 +146,6 @@
 #pragma mark Set Frame
 - (void) setFrame:(CGRect)frame {
     [super setFrame:frame];
-    
-    // 0. 设置 ContentView 的 Frame
-    self.contentView.frame = CGRectMake(
-                                        self.contentViewInset.left,
-                                        self.contentViewInset.top,
-                                        frame.size.width - self.contentViewInset.left - self.contentViewInset.right,
-                                        frame.size.height - self.contentViewInset.top - self.contentViewInset.bottom);
-    
-    // 1. 设置 图片 的 Frame
-    self.imageView.frame = (CGRect) {CGPointZero, self.contentView.frame.size};
-    
-    // 2. 设置 下方文字 的 Frame
-    if (!self.customTextLabelFrame) {
-        CGFloat height = self.contentView.frame.size.height/5.0;
-        self.textLabel.frame = (CGRect) {{0, self.contentView.frame.size.height-height}, {self.contentView.frame.size.width, height}};
-    }
 }
 
 #pragma mark - Get 方法重写

@@ -139,7 +139,7 @@ CGFloat const kDefaultTimeInterval = 5.0f;
 #pragma mark - 公开方法
 #pragma mark -
 #pragma mark 获取可复用 Cell 的实例
-- (MLInfiniteScrollViewCell *) dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier {
+- (id) dequeueReusableCellWithIdentifier:(NSString *)cellIdentifier {
     
     // 1. 如果 可复用 Cell 的字典为空, 则返回空
     if (self.reusableCellDictionary.allKeys.count == 0) return nil;
