@@ -84,8 +84,8 @@
 #pragma mark 初始化 UI
 - (void) configureUI {
     
-    self.scrollView = [MLInfiniteScrollView infiniteScrollViewWithFrame: CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 200) delegate:self dataSource:self timeInterval:4.0];
-    [self.view addSubview: self.scrollView];
+    self.scrollView = [MLInfiniteScrollView infiniteScrollViewWithFrame: CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 200) delegate:self dataSource:self timeInterval:4.0 inView: self.view];
+//    [self.view addSubview: self.scrollView];
     
     self.messageLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, [UIScreen mainScreen].bounds.size.height-30, [UIScreen mainScreen].bounds.size.width, 40)];
     self.messageLabel.textColor = [UIColor blackColor];
@@ -129,7 +129,7 @@
     MLInfiniteScrollViewCell *cell = [scrollView dequeueReusableCellWithIdentifier: @"CellIdentifier"];
     
     if (!cell) {
-        cell = [MLInfiniteScrollViewCell infiniteScrollViewCellWithStyle: MLInfiniteScrollViewStyleSubTitle reusableIdentifier: @"CellIdentifier"];
+        cell = [MLInfiniteScrollViewCell infiniteScrollViewCellWithStyle: MLInfiniteScrollViewStyleSubTitle reusableIdentifier: @"CellIdentifier" bounds: scrollView.bounds];
     }
     
     cell.contentView.backgroundColor = [self.dataSource[index] objectForKey:@"color"];

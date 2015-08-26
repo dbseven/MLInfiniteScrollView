@@ -8,7 +8,7 @@
 
 #import "CustomTableViewCell.h"
 #import "MLInfiniteScrollView.h"
-#import "MLInfiniteScrollViewCell.h"
+#import "CustomInfiniteScrollViewCell.h"
 
 @interface CustomTableViewCell () <MLInfiniteScrollViewDelegate, MLInfiniteScrollViewDataSource>
 
@@ -50,7 +50,7 @@
 #pragma mark -
 #pragma mark 点击
 - (void) infiniteScrollView:(MLInfiniteScrollView *)scrollView didSelectedItemAtIndex:(NSInteger)index {
-    
+    NSLog(@"选择%@", [self.dataSource[index] objectForKey:@"title"]);
 }
 
 #pragma mark - MLInfiniteScrollView DataSource
@@ -62,21 +62,16 @@
 #pragma mark 返回需要显示的视图
 - (MLInfiniteScrollViewCell *) infiniteScrollView:(MLInfiniteScrollView *)scrollView viewAtIndex:(NSInteger)index {
     
-    MLInfiniteScrollViewCell *cell = [scrollView dequeueReusableCellWithIdentifier: @"CellIdentifier"];
+    CustomInfiniteScrollViewCell *cell = [scrollView dequeueReusableCellWithIdentifier: @"CellIdentifier"];
     
     if (!cell) {
-        cell = [MLInfiniteScrollViewCell infiniteScrollViewCellWithStyle: MLInfiniteScrollViewStyleSubTitle reusableIdentifier: @"CellIdentifier"];
+        
+        cell = [[CustomInfiniteScrollViewCell alloc] initWithStyle:MLInfiniteScrollViewStyleDefault reusableIdentifier: @"CellIdentifier" bounds:scrollView.bounds];
     }
     
-    cell.contentView.backgroundColor = [self.dataSource[index] objectForKey:@"color"];
+    cell.contentView.backgroundColor = [UIColor clearColor];
     
-    if (index%2) {
-        cell.textLabel.text = [self.dataSource[index] objectForKey: @"title"];
-    } else {
-        cell.imageView.image = [UIImage imageNamed:@"data18.bin_1"];
-    }
-    
-        cell.contentViewInset = UIEdgeInsetsMake(10, 10, 0, 10);
+    cell.dataSource = self.dataSource[index];
     
     return cell;
 }
