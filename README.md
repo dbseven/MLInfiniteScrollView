@@ -24,10 +24,12 @@
    self.scrollView = [MLInfiniteScrollView infiniteScrollViewWithFrame: CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 200) delegate:self dataSource:self timeInterval:4.0 inView: self.view];
 
 4. 实现 MLInfiniteScrollView 的数据源方法
+5. 
     pragma mark 视图个数
     - (NSInteger) numberOfItemsInInfiniteScrollView:(MLInfiniteScrollView *)scrollView {
        return self.dataSource.count;
     }
+
     pragma mark 返回需要显示的视图
     - (MLInfiniteScrollViewCell *) infiniteScrollView:(MLInfiniteScrollView *)scrollView viewAtIndex:(NSInteger)index {
     
@@ -50,12 +52,14 @@
 
 5. 请在 ViewController 的 ViewWillAppear 中加入以下代码
     - (void) viewWillAppear:(BOOL)animated {
+    - 
        [super viewWillAppear: animated];
        [self.scrollView startAutoScroll];
     }
 
 6. 请在 ViewController 的 ViewWillDisappear 中加入以下代码
     - (void) viewWillDisappear:(BOOL)animated {
+    - 
        [super viewWillDisappear: animated];
        [self.scrollView stopAutoScroll];
     }
