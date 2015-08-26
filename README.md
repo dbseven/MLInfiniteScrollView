@@ -4,13 +4,15 @@
 例子: UIViewController 中添加一个 MLInfiniteScrollView
 
 1. 声明一个 MLInfiniteScrollView成员变量(我推荐您这么做, 因为您需要在 ViewWillDisAppear 方法中调用 MLInfiniteScrollView 实例的 startAutoScroll 方法来停止滚动, 否则由于定时器的存在, 将会无法释放.) 和 NSMutableArray数据源数组.
-    @property (nonatomic, strong) MLInfiniteScrollView *scrollView;
-    @property (nonatomic, strong) NSMutableArray *dataSource;
+    
+ @property (nonatomic, strong) MLInfiniteScrollView *scrollView;
+ 
+ @property (nonatomic, strong) NSMutableArray *dataSource;
+
 
 2. 初始化您的数据源数组, 在这里我们给数据源数组添加 UIColor 实例.
 
-    self.dataSource = [[NSMutableArray alloc] initWithObjects:
-                       @{@"color":[UIColor redColor],      @"title":@"红色"},
+    self.dataSource = [[NSMutableArray alloc] initWithObjects:@{@"color":[UIColor redColor],      @"title":@"红色"},
                        @{@"color":[UIColor orangeColor],   @"title":@"橙色"},
                        @{@"color":[UIColor yellowColor],   @"title":@"黄色"},
                        @{@"color":[UIColor greenColor],    @"title":@"绿色"},
@@ -21,19 +23,22 @@
                        nil];
 
 3. 初始化 MLInfiniteScrollView, 您只需要调用这一个工程方法, 便可以轻松实例化一个 MLInfiniteScrollView 实例.
-   self.scrollView = [MLInfiniteScrollView infiniteScrollViewWithFrame: CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 200) delegate:self dataSource:self timeInterval:4.0 inView: self.view];
+   
+  self.scrollView = [MLInfiniteScrollView infiniteScrollViewWithFrame: CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 200) delegate:self dataSource:self timeInterval:4.0 inView: self.view];
 
 4. 实现 MLInfiniteScrollView 的数据源方法
-5. 
-    pragma mark 视图个数
-- (NSInteger) numberOfItemsInInfiniteScrollView:(MLInfiniteScrollView *)scrollView 
-- {
-      
-    return self.dataSource.count;
-}
 
-    pragma mark 返回需要显示的视图
-    - (MLInfiniteScrollViewCell *) infiniteScrollView:(MLInfiniteScrollView *)scrollView viewAtIndex:(NSInteger)index {
+  (NSInteger) numberOfItemsInInfiniteScrollView:(MLInfiniteScrollView *)scrollView 
+  
+    {
+    
+      return self.dataSource.count;
+      
+    }
+    
+  (MLInfiniteScrollViewCell *) infiniteScrollView:(MLInfiniteScrollView *)scrollView viewAtIndex:(NSInteger)index
+  
+  {
     
         MLInfiniteScrollViewCell *cell = [scrollView dequeueReusableCellWithIdentifier: @"CellIdentifier"];
     
@@ -43,28 +48,37 @@
     
        cell.contentView.backgroundColor = [self.dataSource[index] objectForKey:@"color"];
     
-      if (index%2) {
+       if (index%2) {
           cell.textLabel.text = [self.dataSource[index] objectForKey: @"title"];
-      } else {
+        } else {
           cell.imageView.image = [UIImage imageNamed:@"data18.bin_1"];
-      }
+        }
     
-    return cell;
+      return cell;
   }
 
 5. 请在 ViewController 的 ViewWillAppear 中加入以下代码
-    - (void) viewWillAppear:(BOOL)animated {
-    - 
-       [super viewWillAppear: animated];
-       [self.scrollView startAutoScroll];
-    }
+    
+(void) viewWillAppear:(BOOL)animated 
+
+{
+
+    [super viewWillAppear: animated];
+    
+    [self.scrollView startAutoScroll];
+  
+}
 
 6. 请在 ViewController 的 ViewWillDisappear 中加入以下代码
-    - (void) viewWillDisappear:(BOOL)animated {
-    - 
-       [super viewWillDisappear: animated];
-       [self.scrollView stopAutoScroll];
-    }
+7. 
+  (void) viewWillDisappear:(BOOL)animated 
+{
+
+  [super viewWillDisappear: animated];
+  
+  [self.scrollView stopAutoScroll];
+  
+}
 
 5. 简单的几步, 就已经实现了一个轮播图的效果. 当然您还可以继承 MLInfiniteScrollViewCell 类来实现自定义的 Cell, 更多详情请参照 MLInfiniteScrollViewDemo.
 
