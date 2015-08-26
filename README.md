@@ -22,7 +22,7 @@
                        @{@"color":[UIColor brownColor],    @"title":@"棕色"},
                        nil];
 
-3. 初始化 MLInfiniteScrollView, 您只需要调用这一个工程方法, 便可以轻松实例化一个 MLInfiniteScrollView 实例.
+3. 初始化 MLInfiniteScrollView, 您只需要调用这一个工厂方法, 便可以轻松实例化一个 MLInfiniteScrollView 实例.
    
   self.scrollView = [MLInfiniteScrollView infiniteScrollViewWithFrame: CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 200) delegate:self dataSource:self timeInterval:4.0 inView: self.view];
 
@@ -71,14 +71,15 @@
 
 6. 请在 ViewController 的 ViewWillDisappear 中加入以下代码
 
-  (void) viewWillDisappear:(BOOL)animated 
-    {
+     (void) viewWillDisappear:(BOOL)animated 
+     
+        {
 
-          [super viewWillDisappear: animated];
+             [super viewWillDisappear: animated];
   
-          [self.scrollView stopAutoScroll];
+             [self.scrollView stopAutoScroll];
   
-    }
+        }
 
 5. 简单的几步, 就已经实现了一个轮播图的效果. 当然您还可以继承 MLInfiniteScrollViewCell 类来实现自定义的 Cell, 更多详情请参照 MLInfiniteScrollViewDemo.
 
