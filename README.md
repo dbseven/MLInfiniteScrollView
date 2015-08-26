@@ -26,9 +26,11 @@
 4. 实现 MLInfiniteScrollView 的数据源方法
 5. 
     pragma mark 视图个数
-    - (NSInteger) numberOfItemsInInfiniteScrollView:(MLInfiniteScrollView *)scrollView {
-       return self.dataSource.count;
-    }
+- (NSInteger) numberOfItemsInInfiniteScrollView:(MLInfiniteScrollView *)scrollView 
+- {
+      
+    return self.dataSource.count;
+}
 
     pragma mark 返回需要显示的视图
     - (MLInfiniteScrollViewCell *) infiniteScrollView:(MLInfiniteScrollView *)scrollView viewAtIndex:(NSInteger)index {
